@@ -13,8 +13,7 @@ interface PitProps {
 }
 
 const Pit: FC<PitProps> = ({ clickOptions, stonesCount, position }) => {
-  //const isClickable = stonesCount !== 0 && clickOptions;
-  const isClickable = clickOptions;
+  const isClickable = stonesCount !== 0 && clickOptions;
   return (
     <>
       <div

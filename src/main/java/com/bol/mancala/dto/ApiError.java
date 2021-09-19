@@ -1,50 +1,47 @@
 package com.bol.mancala.dto;
 
-import org.springframework.http.HttpStatus;
-
+import java.io.Serializable;
 import java.util.Arrays;
 import java.util.List;
 
-public class ApiError {
+public class ApiError implements Serializable {
 
     /**
      * Error Status
      */
-    private HttpStatus status;
+    private int status;
+
     /**
      * Error Message
      */
-    private String message;
+    private String error;
 
-    /**
-     * Errors
-     */
-    private List<String> errors;
 
     /**
      *
      * @param status
-     * @param message
-     * @param errors
-     */
-    public ApiError(HttpStatus status, String message, List<String> errors) {
-        super();
-        this.status = status;
-        this.message = message;
-        this.errors = errors;
-    }
-
-    /**
-     *
-     * @param status
-     * @param message
      * @param error
      */
-    public ApiError(HttpStatus status, String message, String error) {
+    public ApiError(int status, String error) {
         super();
         this.status = status;
-        this.message = message;
-        errors = Arrays.asList(error);
+        this.error = error;
     }
 
+
+    public String getError() {
+        return error;
+    }
+
+    public void setError(String error) {
+        this.error = error;
+    }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
+    }
 }

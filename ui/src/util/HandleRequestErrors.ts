@@ -6,11 +6,8 @@ export const handleErrors = (
 ) => {
   if (error.status === 404) {
     StorageService.getInstance().removeItem("session");
-  } else if (error.status === 400) {
-    console.log(JSON.stringify(error));
-    alert("Invalid request");
   } else {
-    alert(JSON.stringify(error));
+    alert(error.error);
   }
   setLoading(false);
 };
