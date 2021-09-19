@@ -3,7 +3,9 @@ package com.bol.mancala.model;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 public class Player implements Serializable {
@@ -30,7 +32,14 @@ public class Player implements Serializable {
      */
     private LocalDateTime createdAt;
 
-    public Player() { }
+    /**
+     *
+     */
+    @ManyToMany(mappedBy = "players")
+    private Set<Match> matches = new HashSet<>();
+
+    public Player() {
+    }
 
     /**
      * Create new player
