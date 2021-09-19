@@ -16,7 +16,6 @@ export const sows = (
       body: { playerId: playerId, positionPitSelected: position },
     },
     (result) => {
-      console.log("Result sows", result);
       if (isError(result)) {
         handleErrors(result, setLoading);
         return;
