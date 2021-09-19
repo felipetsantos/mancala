@@ -1,0 +1,185 @@
+.title {
+  font: 48px Roboto;
+  text-align: center;
+  padding: 40px 0 20px 0;
+}
+.game-holder {
+  position: relative;
+  display: table;
+  width: 960px;
+  margin: auto;
+  font: 18px Roboto;
+}
+.board {
+  border: 5px solid;
+  display: flex;
+  justify-content: space-between;
+  padding: 30px 35px;
+  flex-wrap: nowrap;
+  align-items: stretch;
+  border-radius: 8px;
+}
+
+.column {
+  display: flex;
+
+  align-items: stretch;
+}
+
+.counter {
+  display: block;
+  padding: 28px 30px;
+  min-width: 20px;
+}
+
+.row {
+  display: flex;
+  justify-content: center;
+}
+
+.row-p2 {
+  margin-bottom: 20px;
+}
+
+.row-p2 .pit {
+  background-color: aquamarine;
+}
+
+.row-p1 .pit {
+  background-color: coral;
+}
+
+.pits-holder {
+  flex-grow: 2;
+  flex-direction: column;
+}
+
+.large-pit,
+.pit {
+  border: 5px solid;
+  text-align: center;
+}
+
+.large-pit {
+  border-radius: 12px;
+  display: flex;
+}
+
+.large-pit .counter {
+  min-width: 20px;
+}
+
+.pit {
+  border-radius: 200px;
+  margin: 0 10px;
+}
+.pit.clickable {
+  cursor: pointer;
+}
+
+.btn {
+  cursor: pointer;
+}
+
+.pit.clickable:hover {
+  opacity: 0.8;
+  border-color: grey;
+}
+
+.large-pit-p1 {
+  margin-top: 25px;
+  background-color: coral;
+  align-items: flex-end;
+}
+.large-pit-p2 {
+  margin-bottom: 25px;
+  background-color: aquamarine;
+}
+
+.player {
+  border: 5px solid;
+  width: 200px;
+  text-align: center;
+}
+
+.player-p2 {
+  margin-left: 8px;
+  display: table;
+  border-bottom: 0;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  background-color: aquamarine;
+}
+
+.player-p1 {
+  float: right;
+  margin-right: 8px;
+  border-top: 0;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  background-color: coral;
+}
+
+.player span {
+  display: block;
+  padding: 10px 20px;
+}
+
+.p-wait {
+  background-color: darkgrey;
+  color: lightgray;
+  border-color: black;
+}
+.finished {
+  display: none;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.hover {
+  background-color: white;
+  opacity: 0.7;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.winner {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -100%);
+  border: 5px solid;
+  background-color: greenyellow;
+  opacity: 1;
+  z-index: 9;
+  font-size: 36px;
+  padding: 20px;
+  border-radius: 20px;
+}
+.text-normal {
+  font-size: 12px;
+}
+.link {
+  text-decoration: underline;
+  text-align: center;
+}
+
+.show {
+  display: block;
+}
+
+.button {
+  border: 5px solid;
+  background-color: coral;
+  font-size: 36px;
+  padding: 20px;
+  border-radius: 20px;
+  display: table;
+  margin: auto;
+}
+
+.button:hover {
+  opacity: 0.8;
+}
