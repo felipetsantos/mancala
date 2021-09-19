@@ -1,0 +1,13 @@
+SET REFERENTIAL_INTEGRITY FALSE;
+TRUNCATE TABLE match_player;
+TRUNCATE TABLE pit;
+TRUNCATE TABLE player;
+TRUNCATE TABLE match;
+
+SET REFERENTIAL_INTEGRITY TRUE;
+ALTER TABLE pit ALTER COLUMN id RESTART WITH 1;
+ALTER TABLE match ALTER COLUMN id RESTART WITH 1;
+ALTER TABLE player ALTER COLUMN id RESTART WITH 1;
+
+INSERT INTO player (id, name, username, created_at) VALUES (1, 'Player 1', 'player1', '2021-09-16 00:00:00');
+INSERT INTO player (id, name, username, created_at) VALUES (2, 'Player 2', 'player2', '2021-09-16 00:00:00');
