@@ -1,8 +1,7 @@
-package com.bol.mancala.service.impl;
+package com.bol.mancala.service;
 
 import com.bol.mancala.exception.ElementNotFoundException;
 import com.bol.mancala.model.Player;
-import com.bol.mancala.service.PlayerService;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -16,7 +15,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @ExtendWith(SpringExtension.class)
 @SpringBootTest
-public class DefaultPlayerServiceTest {
+public class PlayerServiceTest {
+
     @Autowired
     private PlayerService playerService;
 
@@ -24,16 +24,15 @@ public class DefaultPlayerServiceTest {
     @DisplayName("create new player")
     public void createPlayer(){
         LocalDateTime createdAt = LocalDateTime.of(2021, 9, 13, 10, 21, 0, 0);
-        Player player = Player.builder().setId(1l)
+        Player player = Player.builder()
                 .setName("Player 1")
-                .setUsername("player1")
+                .setUsername("createPlayer1")
                 .setCreatedAt(createdAt)
                 .build();
-        playerService.createNewPlayer(player);
-        Player player1 = playerService.getPlayerById(1l);
-        assertEquals(1l, player1.getId());
-        assertTrue( player1.getName().equals("Player 1"));
-        assertTrue( player1.getUsername().equals("player1"));
+        Player player1 = playerService.createPlayer(player);
+        assertTrue(player1.getId() > 0);
+        assertTrue(player1.getName().equals("Player 1"));
+        assertTrue(player1.getUsername().equals("createPlayer1"));
         assertEquals(createdAt, player1.getCreatedAt());
     }
 
