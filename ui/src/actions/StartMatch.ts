@@ -13,8 +13,9 @@ export const startMatch = (
   setBoard: (board: any) => void
 ) => {
   setLoading(true);
+  const player1Id = process.env.REACT_APP_PLAYER_1_ID;
   requests.postMatchStart(
-    { pathParams: { playerId: 1 } },
+    { pathParams: { playerId: player1Id ? parseInt(player1Id) : 0 } },
     (result) => {
       if (isError(result)) {
         handleErrors(result, setLoading);
@@ -33,8 +34,14 @@ const jointToMatch = (
   setLoading: (loading: boolean) => void,
   setBoard: (board: any) => void
 ) => {
+  const player2Id = process.env.REACT_APP_PLAYER_2_ID;
   requests.putMatchJoin(
-    { pathParams: { playerId: 2, matchId: matchId } },
+    {
+      pathParams: {
+        playerId: player2Id ? parseInt(player2Id) : 0,
+        matchId: matchId,
+      },
+    },
     (result) => {
       if (isError(result)) {
         handleErrors(result, setLoading);
