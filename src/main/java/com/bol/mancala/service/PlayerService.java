@@ -6,5 +6,5 @@ public interface PlayerService {
 
     Player getPlayerById(Long id);
 
-    Player createNewPlayer(Player player);
+    Player createPlayer(Player player);
 }

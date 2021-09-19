@@ -39,7 +39,7 @@ public class DefaultPlayerService implements PlayerService {
      * @return
      */
     @Override
-    public Player createNewPlayer(Player player) {
+    public Player createPlayer(Player player) {
         return playerRepository.save(player);
     }
 }
