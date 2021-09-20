@@ -8,31 +8,32 @@
 ./mvnw spring-boot:run
 ```
 
-To access the UI:
+Accessing the UI:
 http://localhost:8080/index.html
 
 ## API
 
-The API uses:
+API stack:
 
 - Java version: 11
-- Spring boot  2.5.4
+- Spring boot 2.5.4
 - H2 Database Engine
 
 Basic API documentation swagger file: [swagger.yml](docs/api/swagger.yml).
 
 ## UI
 
-The UI is developed in:
 - React 17.0.2
 
-To run it isolated from the java project it is necessary:
+Running the UI isolated from the Java project requires:
+
 - node 14.17.6
 - yarn 1.22.5
 
-### Running it isolated from java:
+### Running React manually:
 
-The config is located in the ui/env.sample, to change it:
+Config file location: ui/env.sample. Steps to change config properties:
+
 - copy `.env.sample` to `.env.local`
 - replace the value of the `REACT_APP_SERVER_URL` property with the API base URL
 - run `yarn` to download dependencies
