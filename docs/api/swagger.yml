@@ -115,6 +115,46 @@ paths:
           description: Not Found
           schema:
             $ref: '#/definitions/ApiError'
+  /api/match/{matchId}/end/{playerId}:
+    put:
+      tags:
+        - match-controller
+      summary: end
+      operationId: endUsingPUT
+      consumes:
+        - application/json
+      produces:
+        - '*/*'
+      parameters:
+        - name: matchId
+          in: path
+          description: matchId
+          required: true
+          type: integer
+          format: int64
+        - name: playerId
+          in: path
+          description: playerId
+          required: true
+          type: integer
+          format: int64
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Match'
+        '400':
+          description: Bad request
+          schema:
+            $ref: '#/definitions/ApiError'
+        '401':
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/ApiError'
+        '404':
+          description: Not Found
+          schema:
+            $ref: '#/definitions/ApiError'
   /api/match/{matchId}/join/{playerId}:
     put:
       tags:
@@ -139,8 +179,8 @@ paths:
           type: integer
           format: int64
       responses:
-        '201':
-          description: Created
+        '200':
+          description: ok
           schema:
             $ref: '#/definitions/Match'
         '400':
