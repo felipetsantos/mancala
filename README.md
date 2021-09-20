@@ -21,6 +21,9 @@ API stack:
 
 Basic API documentation swagger file: [swagger.yml](docs/api/swagger.yml).
 
+Generate API swagger:
+http://localhost:8080/v2/api-docs
+
 ## UI
 
 - React 17.0.2
