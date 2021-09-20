@@ -6,7 +6,17 @@ import java.util.List;
 
 public interface PitService {
 
-    public List<Pit> getPitsByMatchId(Long matchId);
+    /**
+     * Get pits by match id
+     * @param matchId
+     * @return
+     */
+     List<Pit> getPitsByMatchId(Long matchId);
 
-    public List<Pit> createPits(List<Pit> pits);
+    /**
+     * Create new pits
+     * @param pits
+     * @return
+     */
+    List<Pit> createPits(List<Pit> pits);
 }

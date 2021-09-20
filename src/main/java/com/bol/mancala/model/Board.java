@@ -12,7 +12,6 @@ public class Board implements Serializable {
 
     private static final long serialVersionUID = -2043308928518040398L;
 
-
     private long matchId;
 
     private List<Player> players;

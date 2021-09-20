@@ -34,8 +34,7 @@ public class DefaultPlayerService implements PlayerService {
     }
 
     /**
-     * Create new player
-     *
+     * Create a new player
      * @param player
      * @return
      */

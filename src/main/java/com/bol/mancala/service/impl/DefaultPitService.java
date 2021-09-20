@@ -18,11 +18,21 @@ public class DefaultPitService implements PitService {
         this.pitRepository = pitRepository;
     }
 
+    /**
+     * Get pits by match id
+     * @param matchId
+     * @return
+     */
     @Override
     public List<Pit> getPitsByMatchId(Long matchId) {
         return this.pitRepository.findByMatchId(matchId);
     }
 
+    /**
+     * Create new pits
+     * @param pits
+     * @return
+     */
     @Override
     public List<Pit> createPits(List<Pit> pits) {
         return this.pitRepository.saveAll(pits);

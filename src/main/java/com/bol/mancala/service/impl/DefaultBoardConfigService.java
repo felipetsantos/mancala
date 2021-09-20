@@ -17,11 +17,26 @@ public class DefaultBoardConfigService implements BoardConfigService {
     private static final byte PLAYER_PITS_COUNT = 6;
     private static final byte INITIAL_STONES_PER_PIT = 6;
 
+    /**
+     * Get the default number of stones per normal pit
+     * 6 stones
+     *
+     * @return
+     */
     @Override
     public byte getPitInitialStonesCount() {
         return DefaultBoardConfigService.INITIAL_STONES_PER_PIT;
     }
 
+    /**
+     * return the default pits for a player with the default configuration
+     * 6 normal pits
+     * 1 large pit
+     *
+     * @param player
+     * @param match
+     * @return
+     */
     @Override
     public List<Pit> getPlayerPitsInitialConfig(Player player, Match match) {
         List<Pit> pits = new ArrayList<>(DefaultBoardConfigService.PLAYER_PITS_COUNT);

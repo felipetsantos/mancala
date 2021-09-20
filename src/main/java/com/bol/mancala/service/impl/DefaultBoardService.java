@@ -24,22 +24,19 @@ public class DefaultBoardService implements BoardService {
 
     private PitService pitService;
 
+    /**
+     * @param matchService
+     * @param pitService
+     */
     @Autowired
     public DefaultBoardService(MatchService matchService, PitService pitService) {
         this.matchService = matchService;
         this.pitService = pitService;
     }
 
-    @Override
-    public Board endMatch(long matchId, long playerId) {
-        Match match = this.matchService.getMatchById(matchId);
-        this.validateMatchPlayer(match, playerId);
-        match.setStatus(Match.Status.ABANDONED);
-        this.matchService.updateMatch(match);
-        return buildBoard(match);
-    }
-
     /**
+     * Create a board based in the match
+     *
      * @param match
      * @return
      */
@@ -55,7 +52,14 @@ public class DefaultBoardService implements BoardService {
         );
     }
 
-
+    /**
+     * executes the sows move for a player and position
+     *
+     * @param matchId
+     * @param playerId
+     * @param pitPosition
+     * @return
+     */
     @Override
     public Board sowsStones(long matchId, long playerId, byte pitPosition) {
         Match match = this.matchService.getMatchById(matchId);
@@ -72,6 +76,12 @@ public class DefaultBoardService implements BoardService {
         return board;
     }
 
+    /**
+     * return a board for a given match id
+     *
+     * @param matchId
+     * @return
+     */
     @Override
     public Board getBoard(long matchId) {
         Match match = this.matchService.getMatchById(matchId);
@@ -91,6 +101,13 @@ public class DefaultBoardService implements BoardService {
         this.validatePitPosition(board, playerId, position);
     }
 
+    /**
+     * Validate if the selected pit position is a valid for the move
+     *
+     * @param board
+     * @param playerId
+     * @param position
+     */
     private void validatePitPosition(Board board, long playerId, byte position) {
         List<Pit> pits = board.getPlayerPits(playerId);
         Pit pit = pits.stream().filter(p -> p.getPosition() == position)
@@ -101,18 +118,36 @@ public class DefaultBoardService implements BoardService {
         }
     }
 
+    /**
+     * Validate if is the player turn
+     *
+     * @param match
+     * @param playerId
+     */
     private void validatePlayerTurn(Match match, Long playerId) {
         if (match.getTurnPlayerId() != playerId) {
             throw new BadRequestException(String.format("Player %d is not in the turn", playerId));
         }
     }
 
+    /**
+     * Validate if the match is in the desired status
+     *
+     * @param match
+     * @param status
+     */
     private void validateMatchStatus(Match match, Match.Status status) {
         if (match.getStatus() != status) {
             throw new BadRequestException(String.format("Match %d is not in the status %s", match.getId(), status.toString()));
         }
     }
 
+    /**
+     * Validate if the player is in the match
+     *
+     * @param match
+     * @param playerId
+     */
     private void validateMatchPlayer(Match match, Long playerId) {
         if (!match.isPlayerInTheMatch(playerId)) {
             throw new NotAuthorizedException(String.format("Player %d is not in the match %d", playerId, match.getId()));
