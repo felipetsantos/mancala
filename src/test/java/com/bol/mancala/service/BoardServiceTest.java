@@ -40,7 +40,7 @@ public class BoardServiceTest {
      * Another turn player 1
      */
     @Test
-    @DisplayName("When the last stone of sows landed in the current player's lager pit, the current player have other turn")
+    @DisplayName("When the last stone lands in the current player's lager pit then the current player has another turn")
     public void testSowsRepeatTurn() {
         final long matchId = 1;
         final long player1 = 1;
@@ -75,7 +75,7 @@ public class BoardServiceTest {
      * turn player 2
      */
     @Test
-    @DisplayName("When the amount of stones in the selected pit is bigger than the current player's pits to the right it should increment the number of stones in the opponents player's pits until the stones ends")
+    @DisplayName("When the pit chosen by the current player has more stones than the number of pits he owns to the right side then the stones should be sowed in the opponent pits until there are no stones left")
     public void testSowsLastStoneLandsInOpponentPits() {
         final long matchId = 2;
         final long player1 = 1;
@@ -103,7 +103,7 @@ public class BoardServiceTest {
      * ------------------------|Pit 0| |Pit 1| |Pit 2| |Pit 3| |Pit 4| |Pit 5|
      * turn player 1
      * Select Player 1 pit 5
-     * the move also covers the scenario where the sows should skip the opponent's large pit
+     * the move also covers the scenario where the sow should skip the opponent's large pit
      * <p>
      * -- Initial board setup
      * -------------------------|Pit 5| |Pit 4| |Pit 3| |Pit 2| |Pit 1| |Pit 0|
@@ -114,7 +114,7 @@ public class BoardServiceTest {
      * turn player 2
      */
     @Test
-    @DisplayName("When the last stone of a sows landed in the current player's empty pit it should move the stones from the last pit and the opponent's pit in the same position to the player's large pit")
+    @DisplayName("When the last stone lands in an own empty pit then the player captures his own stone and all stones in the opposite pit (the other player’s pit) and puts them in his own large pit")
     public void testSowsSkipOpponentPitAndCaptureStones() {
         final long matchId = 3;
         final long player1 = 1;
@@ -159,7 +159,7 @@ public class BoardServiceTest {
      * turn player 1
      */
     @Test
-    @DisplayName("When the last stone of a sows landed in the opponent's empty pit it shouldn't capture the stones")
+    @DisplayName("When the last stone lands in the opponent's empty pit then it shouldn't capture the stones")
     public void testSowsLastStoneLandedInOpponentsEmptyPit() {
         final long matchId = 4;
         final long player1 = 1;
@@ -195,7 +195,7 @@ public class BoardServiceTest {
      * Select Player 2 pit 0
      */
     @Test
-    @DisplayName("When a sows request is is not valid a BadRequestException should be thrown")
+    @DisplayName("When a sow request is not valid then a BadRequestException should be thrown")
     public void invalidPositionThrowsBadRequestException() {
         final long matchId = 6;
         final long player2 = 2;
@@ -221,7 +221,7 @@ public class BoardServiceTest {
      * turn player 1
      */
     @Test
-    @DisplayName("When a player stones finish it should complete the match and give the winner")
+    @DisplayName("When one player runs out of stones then the stones left in the opponent's pits are put in the opponent's large pit and the winner is returned")
     public void player1Won() {
         final long matchId = 6;
         final long player1 = 1;

@@ -28,7 +28,7 @@ public class MatchControllerTest {
     private ObjectMapper mapper;
 
     @Test
-    @DisplayName("When a player want start match then it is started")
+    @DisplayName("When a player executes a Start Match request then it is started")
     void matchStartedCorrectly() throws Exception {
         Match match = mapper
                 .readValue(
@@ -46,7 +46,7 @@ public class MatchControllerTest {
     }
 
     @Test
-    @DisplayName("When a player wants join to a match in the status WAITING_SECOND_PLAYER then he joins to it")
+    @DisplayName("When a player wants to join a match with the status WAITING_SECOND_PLAYER then he joins it")
     void matchPlayerJoinCorrectly() throws Exception {
         Match match = mapper
                 .readValue(

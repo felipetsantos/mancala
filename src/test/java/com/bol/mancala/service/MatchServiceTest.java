@@ -30,7 +30,7 @@ class MatchServiceTest {
     private PlayerService playerService;
 
     @Test
-    @DisplayName("When a match creation is requested to the service then it is persisted")
+    @DisplayName("When a Match Creation is requested to the service then it is persisted")
     public void createMatch(){
         LocalDateTime startedAt = LocalDateTime.of(2021, 9, 14, 7, 16, 0, 0);
         Match match = Match.builder()
@@ -44,7 +44,7 @@ class MatchServiceTest {
     }
 
     @Test
-    @DisplayName("When a match creation with players is requested to the service then match and players relation is persisted")
+    @DisplayName("When a Match Creation with players is requested to the service then match and players relation is persisted")
     public void createMatchWithPlayers(){
         LocalDateTime startedAt = LocalDateTime.of(2021, 9, 14, 7, 16, 0, 0);
         Player player = Player.builder().setId(3l)

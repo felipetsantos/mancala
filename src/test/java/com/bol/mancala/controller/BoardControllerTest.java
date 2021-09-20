@@ -47,7 +47,7 @@ public class BoardControllerTest {
     }
 
     @Test
-    @DisplayName("When a player executes sows move then the endpoint will return a board in a new state that reflects the move executed")
+    @DisplayName("When a player executes the sow move then the endpoint will return a board in a new state that reflects the move executed")
     void boardSowsCorrectly() throws Exception {
         Move move = new Move(1, (byte) 0);
         Board board = mapper

@@ -22,7 +22,7 @@ public class PlayerServiceTest {
     private PlayerService playerService;
 
     @Test
-    @DisplayName("When a player creation is requested to the service then it is persisted")
+    @DisplayName("When a Player Creation is requested to the service then it is persisted")
     public void createPlayer(){
         LocalDateTime createdAt = LocalDateTime.of(2021, 9, 13, 10, 21, 0, 0);
         Player player = Player.builder()
@@ -38,7 +38,7 @@ public class PlayerServiceTest {
     }
 
     @Test
-    @DisplayName("When a player creation with a duplicate user name is requested to the service then a BadRequestException is thrown")
+    @DisplayName("When a Player Creation with a duplicate user name is requested to the service then a BadRequestException is thrown")
     public void duplicatedUserName(){
         LocalDateTime createdAt = LocalDateTime.of(2021, 9, 13, 10, 21, 0, 0);
         Player player = Player.builder()
@@ -50,7 +50,7 @@ public class PlayerServiceTest {
     }
 
     @Test
-    @DisplayName("When a player is requested and the id is invalid a ElementNotFoundException is thrown")
+    @DisplayName("When a player is requested and the id is invalid then a ElementNotFoundException is thrown")
     public void elementNotExist(){
         assertThrows(ElementNotFoundException.class, () -> this.playerService.getPlayerById(10l) );
     }

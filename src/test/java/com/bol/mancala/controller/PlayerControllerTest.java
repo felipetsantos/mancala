@@ -28,7 +28,7 @@ public class PlayerControllerTest {
     private ObjectMapper mapper;
 
     @Test
-    @DisplayName("When a player creation is requested then it is persisted")
+    @DisplayName("When a Player Creation is requested then it is persisted")
     void playerCreatedCorrectly() throws Exception {
         LocalDateTime createdAt = LocalDateTime.of(2021, 9, 13, 10, 21, 0, 0);
         Player player = Player.builder()
@@ -53,7 +53,7 @@ public class PlayerControllerTest {
     }
 
     @Test
-    @DisplayName("When a player is requested then it is returned")
+    @DisplayName("When a Player is requested then it is returned")
     void playerRequestCorrectly() throws Exception {
         Player player = mapper
                 .readValue(
