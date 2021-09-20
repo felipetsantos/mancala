@@ -10,6 +10,8 @@ import java.util.stream.Stream;
 @Entity
 public class Pit implements Serializable {
 
+    private static final long serialVersionUID = -4518411290759872816L;
+
     /**
      * Pit id
      */

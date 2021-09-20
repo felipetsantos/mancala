@@ -10,6 +10,8 @@ import java.util.Set;
 @Entity
 public class Player implements Serializable {
 
+    private static final long serialVersionUID = 294843499898792811L;
+
     /**
      * Player id
      */

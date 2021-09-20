@@ -15,6 +15,8 @@ import java.util.stream.Stream;
 @Table(name = "match")
 public class Match implements Serializable {
 
+    private static final long serialVersionUID = 3038751850681298084L;
+
     /**
      * Match id
      */
