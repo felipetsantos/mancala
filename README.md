@@ -7,6 +7,10 @@
 ./mvnw package
 ./mvnw spring-boot:run
 ```
+
+To access the UI:
+http://localhost:8080/index.html
+
 ## API
 
 The API uses:
