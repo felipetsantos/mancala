@@ -16,7 +16,7 @@ http://localhost:8080/index.html
 API stack:
 
 - Java version: 11
-- Spring boot 2.5.4
+- Spring boot  2.5.4
 - H2 Database Engine
 
 Basic API documentation swagger file: [swagger.yml](docs/api/swagger.yml).
@@ -33,7 +33,6 @@ Running the UI isolated from the Java project requires:
 ### Running React manually:
 
 Config file location: ui/env.sample. Steps to change config properties:
-
 - copy `.env.sample` to `.env.local`
 - replace the value of the `REACT_APP_SERVER_URL` property with the API base URL
 - run `yarn` to download dependencies
