@@ -1,7 +1,6 @@
 package com.bol.mancala.controller.api;
 
 import com.bol.mancala.dto.Move;
-import com.bol.mancala.dto.StartMatch;
 import com.bol.mancala.model.Board;
 import com.bol.mancala.service.BoardService;
 import org.springframework.beans.factory.annotation.Autowired;

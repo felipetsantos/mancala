@@ -1,8 +1,6 @@
 package com.bol.mancala.dto;
 
 import java.io.Serializable;
-import java.util.Arrays;
-import java.util.List;
 
 public class ApiError implements Serializable {
 

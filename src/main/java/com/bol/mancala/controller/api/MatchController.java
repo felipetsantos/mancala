@@ -1,10 +1,7 @@
 package com.bol.mancala.controller.api;
 
-import com.bol.mancala.dto.StartMatch;
 import com.bol.mancala.model.Match;
-import com.bol.mancala.model.Player;
 import com.bol.mancala.service.MatchService;
-import com.bol.mancala.service.PlayerService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 

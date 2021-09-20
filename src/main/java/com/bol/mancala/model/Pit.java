@@ -1,15 +1,14 @@
 package com.bol.mancala.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Comparator;
 import java.util.stream.Stream;
 
 @Entity
-public class Pit {
+public class Pit implements Serializable {
 
     /**
      * Pit id
