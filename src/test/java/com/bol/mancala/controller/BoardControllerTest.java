@@ -3,7 +3,6 @@ package com.bol.mancala.controller;
 import com.bol.mancala.dto.Move;
 import com.bol.mancala.model.Board;
 import com.bol.mancala.model.Match;
-import com.bol.mancala.model.Player;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -32,8 +31,7 @@ public class BoardControllerTest {
 
     @Test
     @DisplayName("When a board is requested then it is returned")
-    void boardRequestCorrectly() throws Exception
-    {
+    void boardRequestCorrectly() throws Exception {
         Board board = mapper
                 .readValue(
                         mockMvc
@@ -45,11 +43,11 @@ public class BoardControllerTest {
                                 .getResponse()
                                 .getContentAsString(),
                         Board.class);
-        assertEquals(Match.Status.IN_PROGRESS , board.getStatus());
+        assertEquals(Match.Status.IN_PROGRESS, board.getStatus());
     }
 
     @Test
-    @DisplayName("When a player sows the stone from a pit the board should reflect the action")
+    @DisplayName("When a player executes sows move then the endpoint will return a board in a new state that reflects the move executed")
     void boardSowsCorrectly() throws Exception {
         Move move = new Move(1, (byte) 0);
         Board board = mapper

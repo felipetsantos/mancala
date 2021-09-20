@@ -1,7 +1,4 @@
 package com.bol.mancala.controller;
-
-import com.bol.mancala.dto.Move;
-import com.bol.mancala.model.Board;
 import com.bol.mancala.model.Player;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.DisplayName;
@@ -52,13 +49,12 @@ public class PlayerControllerTest {
                                 .getContentAsString(),
                         Player.class);
         assertEquals(createdAt, playerCreated.getCreatedAt());
-        assertTrue( playerCreated.getId() > 0);
+        assertTrue(playerCreated.getId() > 0);
     }
 
     @Test
-    @DisplayName("When all player is requested then it is returned")
-    void playerRequestCorrectly() throws Exception
-    {
+    @DisplayName("When a player is requested then it is returned")
+    void playerRequestCorrectly() throws Exception {
         Player player = mapper
                 .readValue(
                         mockMvc
@@ -70,6 +66,6 @@ public class PlayerControllerTest {
                                 .getResponse()
                                 .getContentAsString(),
                         Player.class);
-        assertEquals(1 , player.getId());
+        assertEquals(1, player.getId());
     }
 }
