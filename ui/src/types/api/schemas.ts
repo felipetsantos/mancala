@@ -4,6 +4,10 @@ export namespace schemas {
     error: any;
     data: Board;
   }
+  export interface Match {
+    id: number;
+    status: MatchStatus;
+  }
   export interface Player {
     id: number;
     name: string;

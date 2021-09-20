@@ -3,6 +3,7 @@ import { schemas } from "../types/api/schemas";
 import { PlayerPits } from "../components/PlayerPits";
 import LargePit from "../components/LargePit";
 import { Loading } from "../components/Loading";
+import { endMatch } from "../actions/EndMatch";
 
 interface BoardProps {
   board: schemas.Board;
@@ -66,6 +67,16 @@ const Board: FC<BoardProps> = ({ board, setBoard }) => {
       <div className="player player-p1">
         <span>
           {player1.name}: {getPlayingLabel(player1.id, board.turnPlayerId)}
+        </span>
+      </div>
+      <div>
+        <span
+          className="btn link"
+          onClick={() =>
+            endMatch(board.matchId, board.turnPlayerId, setLoading, setBoard)
+          }
+        >
+          End Match
         </span>
       </div>
     </>

@@ -48,7 +48,8 @@ public class DefaultBoardService implements BoardService {
                 players,
                 pits,
                 match.getTurnPlayerId(),
-                match.getStatus()
+                match.getStatus(),
+                match.getWinnerPlayerId()
         );
     }
 

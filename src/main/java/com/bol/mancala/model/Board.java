@@ -27,12 +27,13 @@ public class Board implements Serializable {
 
     private boolean draw = false;
 
-    public Board(long matchId, List<Player> players, List<Pit> pits, Long turnPlayerId, Match.Status status) {
+    public Board(long matchId, List<Player> players, List<Pit> pits, Long turnPlayerId, Match.Status status, Long winnerId) {
         this.players = players;
         this.pits = pits;
         this.turnPlayerId = turnPlayerId;
         this.status = status;
         this.matchId = matchId;
+        this.winnerId = winnerId;
     }
 
     public List<Player> getPlayers() {

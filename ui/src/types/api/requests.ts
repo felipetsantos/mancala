@@ -105,4 +105,29 @@ export namespace requests {
       .then((res) => res.json())
       .then(onSuccess, onError);
   };
+
+  /**
+   * End Match
+   */
+  export interface PutEndMatchParams {
+    pathParams: {
+      matchId: number;
+      playerId: number;
+    };
+  }
+
+  export const putEndMatch = (
+    params: PutMatchJoinParams,
+    onSuccess: (result: any) => void,
+    onError: (error: any) => void
+  ) => {
+    fetch(
+      `${API_URL}/match/${params.pathParams.matchId}/end/${params.pathParams.playerId}`,
+      {
+        method: HttpMethods.PUT,
+      }
+    )
+      .then((res) => res.json())
+      .then(onSuccess, onError);
+  };
 }
