@@ -35,7 +35,7 @@ class PitServiceTest {
     private MatchService matchService;
 
     @Test
-    @DisplayName("create new match with players")
+    @DisplayName("When a pits creation is requested to the service then it is persisted")
     public void createPits() {
         LocalDateTime startedAt = LocalDateTime.of(2021, 9, 14, 7, 16, 0, 0);
         Set<Player> players = new HashSet<>();

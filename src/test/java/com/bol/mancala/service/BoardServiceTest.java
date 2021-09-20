@@ -1,10 +1,9 @@
 package com.bol.mancala.service;
 
 import com.bol.mancala.exception.BadRequestException;
-import com.bol.mancala.exception.ElementNotFoundException;
-import com.bol.mancala.exception.NotAuthorizedException;
 import com.bol.mancala.model.Board;
 import com.bol.mancala.model.Match;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,6 +40,7 @@ public class BoardServiceTest {
      * Another turn player 1
      */
     @Test
+    @DisplayName("When the last stone of sows landed in the current player's lager pit, the current player have other turn")
     public void testSowsRepeatTurn() {
         final long matchId = 1;
         final long player1 = 1;
@@ -75,6 +75,7 @@ public class BoardServiceTest {
      * turn player 2
      */
     @Test
+    @DisplayName("When the amount of stones in the selected pit is bigger than the current player's pits to the right it should increment the number of stones in the opponents player's pits until the stones ends")
     public void testSowsLastStoneLandsInOpponentPits() {
         final long matchId = 2;
         final long player1 = 1;
@@ -102,16 +103,18 @@ public class BoardServiceTest {
      * ------------------------|Pit 0| |Pit 1| |Pit 2| |Pit 3| |Pit 4| |Pit 5|
      * turn player 1
      * Select Player 1 pit 5
+     * the move also covers the scenario where the sows should skip the opponent's large pit
      * <p>
      * -- Initial board setup
      * -------------------------|Pit 5| |Pit 4| |Pit 3| |Pit 2| |Pit 1| |Pit 0|
      * -- player1     --------     0       8       8       8       0       0     -------
      * --  LARGE PIT |  11   |---------------------------------------------------|  0  | LARGE PIT
-     * -- player2    --------      8      8       7       7       7        1     -------
+     * -- player2    --------      8      8       7       7       7        0     -------
      * ------------------------|Pit 0| |Pit 1| |Pit 2| |Pit 3| |Pit 4| |Pit 5|
      * turn player 2
      */
     @Test
+    @DisplayName("When the last stone of a sows landed in the current player's empty pit it should move the stones from the last pit and the opponent's pit in the same position to the player's large pit")
     public void testSowsSkipOpponentPitAndCaptureStones() {
         final long matchId = 3;
         final long player1 = 1;
@@ -156,6 +159,7 @@ public class BoardServiceTest {
      * turn player 1
      */
     @Test
+    @DisplayName("When the last stone of a sows landed in the opponent's empty pit it shouldn't capture the stones")
     public void testSowsLastStoneLandedInOpponentsEmptyPit() {
         final long matchId = 4;
         final long player1 = 1;
@@ -191,6 +195,7 @@ public class BoardServiceTest {
      * Select Player 2 pit 0
      */
     @Test
+    @DisplayName("When a sows request is is not valid a BadRequestException should be thrown")
     public void invalidPositionThrowsBadRequestException() {
         final long matchId = 6;
         final long player2 = 2;
@@ -216,6 +221,7 @@ public class BoardServiceTest {
      * turn player 1
      */
     @Test
+    @DisplayName("When a player stones finish it should complete the match and give the winner")
     public void player1Won() {
         final long matchId = 6;
         final long player1 = 1;

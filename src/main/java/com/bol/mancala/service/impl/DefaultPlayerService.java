@@ -1,5 +1,6 @@
 package com.bol.mancala.service.impl;
 
+import com.bol.mancala.exception.BadRequestException;
 import com.bol.mancala.exception.ElementNotFoundException;
 import com.bol.mancala.model.Player;
 import com.bol.mancala.repository.PlayerRepository;
@@ -40,6 +41,10 @@ public class DefaultPlayerService implements PlayerService {
      */
     @Override
     public Player createPlayer(Player player) {
+        Player duplicatedPlayer = this.playerRepository.findByUsername(player.getUsername());
+        if (duplicatedPlayer != null) {
+            throw new BadRequestException(String.format("Username \"%s\" already in use", player.getName()));
+        }
         return playerRepository.save(player);
     }
 }

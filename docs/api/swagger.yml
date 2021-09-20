@@ -3,11 +3,6 @@ info:
   description: Mancala Api
   version: '1.0'
   title: Mancala Api
-  termsOfService: urn:tos
-  contact: {}
-  license:
-    name: Apache 2.0
-    url: http://www.apache.org/licenses/LICENSE-2.0
 host: localhost:8080
 basePath: /
 tags:
@@ -40,10 +35,12 @@ paths:
             $ref: '#/definitions/Board'
         '401':
           description: Unauthorized
-        '403':
-          description: Forbidden
+          schema:
+            $ref: '#/definitions/ApiError'
         '404':
           description: Not Found
+          schema:
+            $ref: '#/definitions/ApiError'
   /api/board/{matchId}/sows:
     put:
       tags:
@@ -72,14 +69,18 @@ paths:
           description: OK
           schema:
             $ref: '#/definitions/Board'
-        '201':
-          description: Created
+        '400':
+          description: Bad request
+          schema:
+            $ref: '#/definitions/ApiError'
         '401':
           description: Unauthorized
-        '403':
-          description: Forbidden
+          schema:
+            $ref: '#/definitions/ApiError'
         '404':
           description: Not Found
+          schema:
+            $ref: '#/definitions/ApiError'
   /api/match/start/{playerId}:
     post:
       tags:
@@ -102,12 +103,18 @@ paths:
           description: Created
           schema:
             $ref: '#/definitions/Match'
+        '400':
+          description: Bad request
+          schema:
+            $ref: '#/definitions/ApiError'
         '401':
           description: Unauthorized
-        '403':
-          description: Forbidden
+          schema:
+            $ref: '#/definitions/ApiError'
         '404':
           description: Not Found
+          schema:
+            $ref: '#/definitions/ApiError'
   /api/match/{matchId}/join/{playerId}:
     put:
       tags:
@@ -136,12 +143,18 @@ paths:
           description: Created
           schema:
             $ref: '#/definitions/Match'
+        '400':
+          description: Bad request
+          schema:
+            $ref: '#/definitions/ApiError'
         '401':
           description: Unauthorized
-        '403':
-          description: Forbidden
+          schema:
+            $ref: '#/definitions/ApiError'
         '404':
           description: Not Found
+          schema:
+            $ref: '#/definitions/ApiError'
   /api/player:
     post:
       tags:
@@ -164,12 +177,18 @@ paths:
           description: Created
           schema:
             $ref: '#/definitions/Player'
+        '400':
+          description: Bad request
+          schema:
+            $ref: '#/definitions/ApiError'
         '401':
           description: Unauthorized
-        '403':
-          description: Forbidden
+          schema:
+            $ref: '#/definitions/ApiError'
         '404':
           description: Not Found
+          schema:
+            $ref: '#/definitions/ApiError'
   /api/player/{id}:
     get:
       tags:
@@ -192,11 +211,20 @@ paths:
             $ref: '#/definitions/Player'
         '401':
           description: Unauthorized
-        '403':
-          description: Forbidden
+          schema:
+            $ref: '#/definitions/ApiError'
         '404':
           description: Not Found
+          schema:
+            $ref: '#/definitions/ApiError'
 definitions:
+  ApiError:
+    type: object
+    properties:
+      status:
+        type: integer
+      error:
+        type: string
   Board:
     type: object
     properties:

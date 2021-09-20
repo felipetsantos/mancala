@@ -31,7 +31,7 @@ class MatchServiceTest {
     private PlayerService playerService;
 
     @Test
-    @DisplayName("create new match")
+    @DisplayName("When a match creation is requested to the service then it is persisted")
     public void createMatch(){
         LocalDateTime startedAt = LocalDateTime.of(2021, 9, 14, 7, 16, 0, 0);
         Match match = Match.builder()
@@ -45,17 +45,17 @@ class MatchServiceTest {
     }
 
     @Test
-    @DisplayName("create new match with players")
+    @DisplayName("When a match creation with players is requested to the service then match and players relation is persisted")
     public void createMatchWithPlayers(){
         LocalDateTime startedAt = LocalDateTime.of(2021, 9, 14, 7, 16, 0, 0);
         Player player = Player.builder().setId(3l)
                 .setName("Player 1")
-                .setUsername("player1_")
+                .setUsername("player1Match")
                 .setCreatedAt(startedAt)
                 .build();
         Player player2 = Player.builder().setId(4l)
                 .setName("Player 2")
-                .setUsername("player2_")
+                .setUsername("player2Match")
                 .setCreatedAt(startedAt)
                 .build();
         Set<Player> players = new HashSet<>();

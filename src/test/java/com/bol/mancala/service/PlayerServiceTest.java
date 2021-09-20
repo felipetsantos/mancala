@@ -1,5 +1,6 @@
 package com.bol.mancala.service;
 
+import com.bol.mancala.exception.BadRequestException;
 import com.bol.mancala.exception.ElementNotFoundException;
 import com.bol.mancala.model.Player;
 import org.junit.jupiter.api.DisplayName;
@@ -21,7 +22,7 @@ public class PlayerServiceTest {
     private PlayerService playerService;
 
     @Test
-    @DisplayName("create new player")
+    @DisplayName("When a player creation is requested to the service then it is persisted")
     public void createPlayer(){
         LocalDateTime createdAt = LocalDateTime.of(2021, 9, 13, 10, 21, 0, 0);
         Player player = Player.builder()
@@ -37,7 +38,19 @@ public class PlayerServiceTest {
     }
 
     @Test
-    @DisplayName("player not found")
+    @DisplayName("When a player creation with a duplicate user name is requested to the service then a BadRequestException is thrown")
+    public void duplicatedUserName(){
+        LocalDateTime createdAt = LocalDateTime.of(2021, 9, 13, 10, 21, 0, 0);
+        Player player = Player.builder()
+                .setName("Player 1")
+                .setUsername("player1")
+                .setCreatedAt(createdAt)
+                .build();
+        assertThrows(BadRequestException.class, () -> this.playerService.createPlayer(player) );
+    }
+
+    @Test
+    @DisplayName("When a player is requested and the id is invalid a ElementNotFoundException is thrown")
     public void elementNotExist(){
         assertThrows(ElementNotFoundException.class, () -> this.playerService.getPlayerById(10l) );
     }
