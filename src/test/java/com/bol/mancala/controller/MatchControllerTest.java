@@ -11,8 +11,8 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import static org.junit.jupiter.api.Assertions.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -62,5 +62,24 @@ public class MatchControllerTest {
         assertEquals(Match.Status.IN_PROGRESS, match.getStatus());
         assertTrue(match.getId() > 0);
         assertTrue(match.getPlayers().stream().filter(p -> p.getId() == 2).findFirst().isPresent());
+    }
+
+    @Test
+    @DisplayName("When a player wants to end a match with the status IN_PROGRESS then it ends")
+    void matchEndedCorrectly() throws Exception {
+        Match match = mapper
+                .readValue(
+                        mockMvc
+                                .perform(
+                                        put("/api/match/7/end/1")
+                                )
+                                .andExpect(status().is2xxSuccessful())
+                                .andReturn()
+                                .getResponse()
+                                .getContentAsString(),
+                        Match.class);
+        assertEquals(Match.Status.ABANDONED, match.getStatus());
+        assertNotNull(match.getEndedAt());
+        assertTrue(match.getId() > 0);
     }
 }

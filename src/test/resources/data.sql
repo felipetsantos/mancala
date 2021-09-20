@@ -31,6 +31,9 @@ VALUES (5, '2021-09-16 00:00:00', null, 2, 1, null, 0);
 INSERT INTO match (id, started_at, ended_at, status, turn_player_id, winner_player_id, draw)
 VALUES (6, '2021-09-16 00:00:00', null, 3, 2, null, 0);
 
+INSERT INTO match (id, started_at, ended_at, status, turn_player_id, winner_player_id, draw)
+VALUES (7, '2021-09-16 00:00:00', null, 3, 1, null, 0);
+
 INSERT INTO match_player (match_id, player_id) VALUES (1, 1);
 INSERT INTO match_player (match_id, player_id) VALUES (1, 2);
 
@@ -48,6 +51,9 @@ INSERT INTO match_player (match_id, player_id) VALUES (5, 1);
 
 INSERT INTO match_player (match_id, player_id) VALUES (6, 1);
 INSERT INTO match_player (match_id, player_id) VALUES (6, 2);
+
+INSERT INTO match_player (match_id, player_id) VALUES (7, 1);
+INSERT INTO match_player (match_id, player_id) VALUES (7, 2);
 
 
 -- Initial board setup
@@ -174,3 +180,26 @@ INSERT INTO pit (id, match_id, player_id, type, stones_count, position) VALUES (
 INSERT INTO pit (id, match_id, player_id, type, stones_count, position) VALUES (75, 6, 2, 1, 1, 4);
 INSERT INTO pit (id, match_id, player_id, type, stones_count, position) VALUES (76, 6, 2, 1, 0, 5);
 INSERT INTO pit (id, match_id, player_id, type, stones_count, position) VALUES (77, 6, 2, 2, 19, 6);
+
+
+-- Initial board setup
+------------------------|Pit 5| |Pit 4| |Pit 3| |Pit 2| |Pit 1| |Pit 0|
+-- player1     -------     6       6       6       6       6       6      -----
+--  LARGE PIT |  0   |---------------------------------------------------|  0  | LARGE PIT
+-- player2     ______      6      6       6       6       6       6       _____
+------------------------|Pit 0| |Pit 1| |Pit 2| |Pit 3| |Pit 4| |Pit 5|
+INSERT INTO pit (id, match_id, player_id, type, stones_count, position) VALUES (78, 7, 1, 1, 6, 0);
+INSERT INTO pit (id, match_id, player_id, type, stones_count, position) VALUES (79, 7, 1, 1, 6, 1);
+INSERT INTO pit (id, match_id, player_id, type, stones_count, position) VALUES (80, 7, 1, 1, 6, 2);
+INSERT INTO pit (id, match_id, player_id, type, stones_count, position) VALUES (81, 7, 1, 1, 6, 3);
+INSERT INTO pit (id, match_id, player_id, type, stones_count, position) VALUES (82, 7, 1, 1, 6, 4);
+INSERT INTO pit (id, match_id, player_id, type, stones_count, position) VALUES (83, 7, 1, 1, 6, 5);
+INSERT INTO pit (id, match_id, player_id, type, stones_count, position) VALUES (84, 7, 1, 2, 0, 6);
+
+INSERT INTO pit (id, match_id, player_id, type, stones_count, position) VALUES (85, 7, 2, 1, 6, 0);
+INSERT INTO pit (id, match_id, player_id, type, stones_count, position) VALUES (86, 7, 2, 1, 6, 1);
+INSERT INTO pit (id, match_id, player_id, type, stones_count, position) VALUES (87, 7, 2, 1, 6, 2);
+INSERT INTO pit (id, match_id, player_id, type, stones_count, position) VALUES (88, 7, 2, 1, 6, 3);
+INSERT INTO pit (id, match_id, player_id, type, stones_count, position) VALUES (89, 7, 2, 1, 6, 4);
+INSERT INTO pit (id, match_id, player_id, type, stones_count, position) VALUES (90, 7, 2, 1, 6, 5);
+INSERT INTO pit (id, match_id, player_id, type, stones_count, position) VALUES (91, 7, 2, 2, 0, 6);

@@ -21,8 +21,14 @@ public class MatchController {
         return this.matchService.startMatch(playerId);
     }
 
+    @PutMapping("{matchId}/end/{playerId}")
+    @ResponseStatus(HttpStatus.OK)
+    public Match end(@PathVariable Long matchId, @PathVariable Long playerId) {
+        return this.matchService.endMatch(matchId, playerId);
+    }
+
     @PutMapping("{matchId}/join/{playerId}")
-    @ResponseStatus(HttpStatus.CREATED)
+    @ResponseStatus(HttpStatus.OK)
     public Match join(@PathVariable Long matchId, @PathVariable Long playerId) {
         return this.matchService.joinToMatch(playerId, matchId);
     }
